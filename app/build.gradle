@@ -5,13 +5,14 @@ android {
     buildToolsVersion "29.0.3"
 
     defaultConfig {
-        compileSdkVersion   rootProject.ext.android["compileSdkVersion"]
-        buildToolsVersion   rootProject.ext.android["buildToolsVersion"]
-        applicationId       rootProject.ext.android["applicationId"]
-        minSdkVersion       rootProject.ext.android["minSdkVersion"]
-        targetSdkVersion    rootProject.ext.android["targetSdkVersion"]
-        versionCode         rootProject.ext.android["versionCode"]
-        versionName         rootProject.ext.android["versionName"]
+        compileSdkVersion rootProject.ext.android["compileSdkVersion"]
+        buildToolsVersion rootProject.ext.android["buildToolsVersion"]
+        applicationId rootProject.ext.android["applicationId"]
+        minSdkVersion rootProject.ext.android["minSdkVersion"]
+        targetSdkVersion rootProject.ext.android["targetSdkVersion"]
+        versionCode rootProject.ext.android["versionCode"]
+        versionName rootProject.ext.android["versionName"]
+        multiDexEnabled rootProject.ext.android["multiDexEnabled"]
     }
 
     compileOptions {
@@ -35,11 +36,11 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-    implementation 'androidx.appcompat:appcompat:1.2.0'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
 
+    implementation rootProject.ext.support["appcompat"]
     implementation rootProject.ext.support["constraintlayout"]
     implementation rootProject.ext.dependencies["okhttp"]
     implementation rootProject.ext.dependencies["coroutines-android"]
@@ -52,7 +53,14 @@ dependencies {
     implementation rootProject.ext.dependencies["gson"]
     implementation rootProject.ext.dependencies["viewModel"]
     implementation rootProject.ext.dependencies["liveData"]
+    implementation rootProject.ext.dependencies["rxpermissions"]
+    implementation rootProject.ext.dependencies["rxjava"]
+    implementation rootProject.ext.dependencies["recyclerview"]
 
     // 导入最新的高德地图库
     implementation 'com.amap.api:navi-3dmap:latest.integration'
+    implementation 'com.amap.api:navi-3dmap:latest.integration'
+    implementation 'com.amap.api:search:latest.integration'
+    implementation 'com.amap.api:location:latest.integration'
+    implementation 'androidx.cardview:cardview:1.0.0'
 }
