@@ -5,13 +5,22 @@ android {
     buildToolsVersion "29.0.3"
 
     defaultConfig {
-        applicationId "cn.imppp.guider"
-        minSdkVersion 22
-        targetSdkVersion 29
-        versionCode 1
-        versionName "1.0"
+        compileSdkVersion   rootProject.ext.android["compileSdkVersion"]
+        buildToolsVersion   rootProject.ext.android["buildToolsVersion"]
+        applicationId       rootProject.ext.android["applicationId"]
+        minSdkVersion       rootProject.ext.android["minSdkVersion"]
+        targetSdkVersion    rootProject.ext.android["targetSdkVersion"]
+        versionCode         rootProject.ext.android["versionCode"]
+        versionName         rootProject.ext.android["versionName"]
+    }
 
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    dataBinding {
+        enabled = true
     }
 
     buildTypes {
@@ -27,8 +36,23 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
     implementation 'androidx.appcompat:appcompat:1.2.0'
-    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+
+    implementation rootProject.ext.support["constraintlayout"]
+    implementation rootProject.ext.dependencies["okhttp"]
+    implementation rootProject.ext.dependencies["coroutines-android"]
+    implementation rootProject.ext.dependencies["coroutines-core"]
+    implementation rootProject.ext.dependencies["retrofit"]
+    implementation rootProject.ext.dependencies["moshi"]
+    implementation rootProject.ext.dependencies["moshi-kotlin-json"]
+    implementation rootProject.ext.dependencies["moshi-convert"]
+    implementation rootProject.ext.dependencies["logging-interceptor"]
+    implementation rootProject.ext.dependencies["gson"]
+    implementation rootProject.ext.dependencies["viewModel"]
+    implementation rootProject.ext.dependencies["liveData"]
+
+    // 导入最新的高德地图库
+    implementation 'com.amap.api:navi-3dmap:latest.integration'
 }
