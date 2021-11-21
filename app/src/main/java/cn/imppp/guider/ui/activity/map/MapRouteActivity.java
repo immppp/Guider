@@ -76,7 +76,11 @@ public class MapRouteActivity extends BaseActivity<MapRouteViewModel, ActivityAm
         if (aMap == null) {
             aMap = mBinding.mvMapRouter.getMap();
         }
-        mRouteSearch = new RouteSearch(this);
+        try {
+            mRouteSearch = new RouteSearch(this);
+        } catch (AMapException e) {
+            e.printStackTrace();
+        }
         mRouteSearch.setRouteSearchListener(this);
         aMap.setOnMapClickListener(this);
         aMap.setOnMarkerClickListener(this);

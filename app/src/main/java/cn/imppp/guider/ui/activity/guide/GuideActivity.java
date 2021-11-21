@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.util.Log;
 
 import com.amap.api.maps.AMap;
+import com.amap.api.maps.AMapException;
 import com.amap.api.maps.MapView;
 import com.amap.api.maps.model.LatLng;
 import com.amap.api.navi.AMapNavi;
@@ -54,7 +55,11 @@ public class GuideActivity extends AppCompatActivity {
 
         aMap = anvGuide.getMap();
 
-        aMapNavi = AMapNavi.getInstance(App.getContext());
+        try {
+            aMapNavi = AMapNavi.getInstance(App.getContext());
+        } catch (AMapException e) {
+            e.printStackTrace();
+        }
         aMapNavi.setMultipleRouteNaviMode(true);
         aMapNavi.addAMapNaviListener(mapNaviListener);
         //开启多路线模式
